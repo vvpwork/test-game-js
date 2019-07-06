@@ -44,33 +44,42 @@ let gameBoard = () => {
 };
 //*serch related square */
 function searchSquare(startSquare, arr, target) {
-  const squareArr = arr.filter(el => el.value == target.dataset.value);
+  const squareArr = arr.filter(el => el.value === target.dataset.value);
+  console.log(squareArr);
   let broSquare = [startSquare];
   let iteretion;
   do {
     iteretion = false;
     let nextStep = [];
-    squareArr.forEach(el =>
+    squareArr.forEach(el => {
       broSquare.forEach(square => {
-        if (el.isView == false) return;
-        if (el.id == square.id) el.isView = false;
+        if (el.isView === false) return;
+        if (square.id === +el.id) {
+          el.isView = false;
+          iteretion = true;
+        }
         if (
-          (square.position.x === el.position.x &&
-            square.position.top == el.position.bottom) ||
-          (square.position.x === el.position.x &&
-            square.position.bottom == el.position.top) ||
-          ((square.position.y === el.position.y &&
-            square.position.right == el.position.left) ||
-            (square.position.y === el.position.y &&
-              square.position.left == el.position.right))
+          (Math.floor(square.position.x) === Math.floor(el.position.x) &&
+            Math.floor(square.position.top) ==
+              Math.floor(el.position.bottom)) ||
+          (Math.floor(square.position.x) === Math.floor(el.position.x) &&
+            Math.floor(square.position.bottom) ==
+              Math.floor(el.position.top)) ||
+          ((Math.floor(square.position.y) === Math.floor(el.position.y) &&
+            Math.floor(square.position.right) ===
+              Math.floor(el.position.left)) ||
+            (Math.floor(square.position.y) === Math.floor(el.position.y) &&
+              Math.floor(square.position.left) ==
+                Math.floor(el.position.right)))
         ) {
           el.isView = false;
           nextStep.push(el);
           iteretion = true;
         }
-      })
-    );
+      });
+    });
     broSquare = nextStep;
+    console.log(broSquare);
   } while (iteretion);
   return squareArr.filter(el => el.isView === false);
 }
@@ -79,7 +88,7 @@ function searchSquare(startSquare, arr, target) {
 function changeSguareInDOM(searchBoard, changeSquareArr) {
   searchBoard.forEach(el =>
     changeSquareArr.forEach(square => {
-      if (el.id === square.id) el.link.remove();
+      if (el.id === square.id) console.log(el.link.id) || el.link.remove();
     })
   );
 }
@@ -88,12 +97,15 @@ root.addEventListener("click", handleClick);
 
 function handleClick({ target }) {
   const searchBoard = gameBoard();
+  console.log(searchBoard);
   const startSquare = {
-    id: target.id,
-    value: target.innerHTML,
+    id: +target.id,
+    value: target.dataset.value,
     position: target.getBoundingClientRect(),
-    link: target
+    link: target,
+    isView: false
   };
+  console.log(startSquare);
   const changeSquareArr = searchSquare(startSquare, searchBoard, target);
   changeSguareInDOM(searchBoard, changeSquareArr);
 }
