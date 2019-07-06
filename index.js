@@ -45,7 +45,6 @@ let gameBoard = () => {
 //*serch related square */
 function searchSquare(startSquare, arr, target) {
   const squareArr = arr.filter(el => el.value === target.dataset.value);
-  console.log(squareArr);
   let broSquare = [startSquare];
   let iteretion;
   do {
@@ -79,7 +78,6 @@ function searchSquare(startSquare, arr, target) {
       });
     });
     broSquare = nextStep;
-    console.log(broSquare);
   } while (iteretion);
   return squareArr.filter(el => el.isView === false);
 }
@@ -97,7 +95,6 @@ root.addEventListener("click", handleClick);
 
 function handleClick({ target }) {
   const searchBoard = gameBoard();
-  console.log(searchBoard);
   const startSquare = {
     id: +target.id,
     value: target.dataset.value,
@@ -105,7 +102,6 @@ function handleClick({ target }) {
     link: target,
     isView: false
   };
-  console.log(startSquare);
   const changeSquareArr = searchSquare(startSquare, searchBoard, target);
   changeSguareInDOM(searchBoard, changeSquareArr);
 }
