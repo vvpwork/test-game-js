@@ -5,9 +5,9 @@ h2 {
 }
 #root {
   display: grid;
-  grid-template-columns: repeat(6, 70px);
-  grid-template-rows: repeat(7, 70px);
-  width: calc(6 * 70px);
+  grid-template-columns: repeat(6, 50px);
+  grid-template-rows: repeat(7, 50px);
+  width: calc(6 * 50px);
   margin: 0 auto;
 }
 
@@ -41,4 +41,12 @@ h2 {
   background: url("https://image.flaticon.com/icons/svg/24/24155.svg") no-repeat,
     center;
   background-size: contain;
+}
+
+@media (min-width: 640px) {
+  #root {
+    grid-template-columns: repeat(6, 70px);
+    grid-template-rows: repeat(7, 70px);
+    width: calc(6 * 70px);
+  }
 }
