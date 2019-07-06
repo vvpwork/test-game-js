@@ -1,0 +1,44 @@
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 20px, 0;
+}
+#root {
+  display: grid;
+  grid-template-columns: repeat(6, 70px);
+  grid-template-rows: repeat(7, 70px);
+  width: calc(6 * 70px);
+  margin: 0 auto;
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.heart {
+  background: url("https://steemitimages.com/0x0/https://steemitimages.com/DQmRbHTr1DM23vmVvG2Rhcb1bLUsZGZYEg8Xi7TgKwEkhpX/%D1%87%D0%B5%D1%80%D0%B2%D0%B8%20-%20%D0%BC%D0%B0%D1%81%D1%82%D1%8C%20%D0%BA%D0%B0%D1%80%D1%82.png")
+      no-repeat,
+    center;
+  background-size: contain;
+}
+.diamonds {
+  background: url("https://steemitimages.com/DQmZhmthD18W4VL7Z5YucdbSudQUegSvX3WarC8DviPwbng/%D0%B1%D1%83%D0%B1%D0%B8%20-%20%D0%BC%D0%B0%D1%81%D1%82%D1%8C%20%D0%BA%D0%B0%D1%80%D1%82.png")
+      no-repeat,
+    center;
+  background-size: contain;
+}
+.clubs {
+  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/SuitClubs.svg/1200px-SuitClubs.svg.png")
+      no-repeat,
+    center;
+  background-size: contain;
+}
+.spades {
+  background: url("https://image.flaticon.com/icons/svg/24/24155.svg") no-repeat,
+    center;
+  background-size: contain;
+}
