@@ -59,16 +59,16 @@ function searchSquare(startSquare, arr, target) {
         }
         if (
           (Math.floor(square.position.x) === Math.floor(el.position.x) &&
-            Math.floor(square.position.top) ==
+            Math.floor(square.position.top) ===
               Math.floor(el.position.bottom)) ||
           (Math.floor(square.position.x) === Math.floor(el.position.x) &&
-            Math.floor(square.position.bottom) ==
+            Math.floor(square.position.bottom) ===
               Math.floor(el.position.top)) ||
           ((Math.floor(square.position.y) === Math.floor(el.position.y) &&
             Math.floor(square.position.right) ===
               Math.floor(el.position.left)) ||
             (Math.floor(square.position.y) === Math.floor(el.position.y) &&
-              Math.floor(square.position.left) ==
+              Math.floor(square.position.left) ===
                 Math.floor(el.position.right)))
         ) {
           el.isView = false;
